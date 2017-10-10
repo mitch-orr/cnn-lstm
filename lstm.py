@@ -25,6 +25,7 @@ with sess.as_default():
         while(ret):
             # Capture frame-by-frame
             ret, frame = cap.read()
+
             if frame is None:
             	break
 
@@ -61,5 +62,8 @@ with sess.as_default():
 
     model = tflearn.DNN(net, tensorboard_verbose=2)
 
-    model.fit(a, annotations, n_epoch=1, validation_set=0.2, show_metric=True,
+    model.fit(vid_frames, annotations, n_epoch=1, validation_set=0.2, show_metric=True,
     snapshot_step=100)
+
+#https://github.com/fchollet/keras/issues/5527
+#https://link.springer.com/article/10.1007/s11633-016-1006-2
